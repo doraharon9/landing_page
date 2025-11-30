@@ -1,0 +1,439 @@
+/* ========================================
+   BASIC RESET & SETUP
+   ======================================== */
+/* This removes default browser styling so we start fresh */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ========================================
+   COLORS & FONTS
+   ======================================== */
+:root {
+    /* Main colors - think of these as your paint palette */
+    --primary-color: #6366f1;      /* Purple-blue for buttons */
+    --primary-dark: #4f46e5;       /* Darker shade for hover effects */
+    --text-dark: #1f2937;          /* Almost black for main text */
+    --text-gray: #6b7280;          /* Gray for secondary text */
+    --background-light: #f9fafb;   /* Light gray background */
+    --white: #ffffff;
+    --border-color: #e5e7eb;
+
+    /* Spacing system - consistent spacing throughout */
+    --spacing-xs: 0.5rem;   /* 8px */
+    --spacing-sm: 1rem;     /* 16px */
+    --spacing-md: 2rem;     /* 32px */
+    --spacing-lg: 4rem;     /* 64px */
+    --spacing-xl: 6rem;     /* 96px */
+}
+
+/* ========================================
+   GENERAL STYLES
+   ======================================== */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--white);
+}
+
+/* Container keeps content centered and not too wide */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* ========================================
+   HEADER / NAVIGATION
+   ======================================== */
+.header {
+    background: var(--white);
+    padding: var(--spacing-sm) 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.cta-button {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+/* What happens when you hover over a button */
+.cta-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+/* Larger button for important actions */
+.cta-button.large {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+/* ========================================
+   HERO SECTION (Top of page)
+   ======================================== */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--white);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.2;
+}
+
+.hero-tagline {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    opacity: 0.95;
+}
+
+.hero-value {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+/* ========================================
+   VALUE PROPOSITION
+   ======================================== */
+.value-prop {
+    background: var(--background-light);
+    padding: var(--spacing-lg) 0;
+    text-align: center;
+}
+
+.value-statement {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+/* ========================================
+   SECTION STYLES (Problem, Solution, etc.)
+   ======================================== */
+section {
+    padding: var(--spacing-lg) 0;
+}
+
+/* Alternating background colors for visual interest */
+.problem {
+    background: var(--white);
+}
+
+.solution {
+    background: var(--background-light);
+}
+
+.how-it-works {
+    background: var(--white);
+}
+
+.benefits {
+    background: var(--background-light);
+}
+
+.use-cases {
+    background: var(--white);
+}
+
+.demo-narrative {
+    background: var(--background-light);
+}
+
+.testimonials {
+    background: var(--white);
+}
+
+.pricing {
+    background: var(--background-light);
+    text-align: center;
+}
+
+/* Section headings */
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+/* Regular paragraphs */
+p {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-gray);
+}
+
+/* Highlighted text */
+.highlight {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: var(--spacing-md);
+}
+
+/* ========================================
+   HOW IT WORKS - STEPS
+   ======================================== */
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.step {
+    background: var(--white);
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Nice effect when hovering over a step */
+.step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.step-number {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+.step h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-dark);
+}
+
+.step p {
+    color: var(--text-gray);
+}
+
+/* ========================================
+   BENEFITS LIST
+   ======================================== */
+.benefits-list {
+    list-style: none;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.benefits-list li {
+    font-size: 1.125rem;
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    background: var(--white);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* ========================================
+   USE CASES GRID
+   ======================================== */
+.use-case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.use-case {
+    background: var(--background-light);
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    transition: border-color 0.3s ease;
+}
+
+.use-case:hover {
+    border-color: var(--primary-color);
+}
+
+.use-case h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--primary-color);
+}
+
+/* ========================================
+   DEMO NARRATIVE
+   ======================================== */
+.demo-narrative {
+    text-align: center;
+}
+
+.demo-narrative p {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.25rem;
+}
+
+/* ========================================
+   TESTIMONIALS
+   ======================================== */
+.testimonials {
+    text-align: center;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.testimonial {
+    background: var(--background-light);
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.quote {
+    font-size: 1.125rem;
+    font-style: italic;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.8;
+}
+
+.author {
+    font-size: 1rem;
+    color: var(--text-gray);
+    font-weight: 600;
+}
+
+/* ========================================
+   FINAL CTA SECTION
+   ======================================== */
+.final-cta {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--white);
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+}
+
+.final-cta h2 {
+    color: var(--white);
+    font-size: 2.5rem;
+}
+
+.cta-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--white);
+    opacity: 0.95;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+    background: var(--text-dark);
+    color: var(--white);
+    text-align: center;
+    padding: var(--spacing-md) 0;
+}
+
+.footer p {
+    color: var(--white);
+    opacity: 0.8;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN (Mobile phones)
+   ======================================== */
+/* These rules apply when the screen is smaller than 768px (tablets/phones) */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-tagline {
+        font-size: 1.25rem;
+    }
+
+    .hero-value {
+        font-size: 1.125rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .value-statement {
+        font-size: 1.25rem;
+    }
+
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .steps,
+    .use-case-grid,
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   SMOOTH SCROLLING
+   ======================================== */
+html {
+    scroll-behavior: smooth;
+}
