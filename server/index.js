@@ -123,7 +123,12 @@ app.get('/api/database/top', async (req, res) => {
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../dist')))
 
-  app.get('*', (req, res) => {
+  // Catch-all route - only for non-API requests
+  app.get('*', (req, res, next) => {
+    // Don't intercept API routes
+    if (req.path.startsWith('/api/')) {
+      return next()
+    }
     res.sendFile(path.join(__dirname, '../dist/index.html'))
   })
 }
