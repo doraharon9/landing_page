@@ -1,14 +1,19 @@
 import express from 'express'
 import cors from 'cors'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import { searchRestaurants } from './searchEngine.js'
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
 const app = express()
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 
 app.use(cors())
 app.use(express.json())
 
-// Search endpoint
+// API endpoints
 app.get('/api/search', (req, res) => {
   const query = req.query.q || ''
 
@@ -21,7 +26,6 @@ app.get('/api/search', (req, res) => {
   }
 })
 
-// Get restaurant by ID
 app.get('/api/restaurants/:id', (req, res) => {
   const { id } = req.params
   const allRestaurants = searchRestaurants('')
@@ -34,6 +38,16 @@ app.get('/api/restaurants/:id', (req, res) => {
   }
 })
 
+// Serve static files from dist folder in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../dist')))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist/index.html'))
+  })
+}
+
 app.listen(PORT, () => {
-  console.log(`🚀 SocialBite API running on http://localhost:${PORT}`)
+  console.log(`🚀 SocialBite running on http://localhost:${PORT}`)
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`)
 })
