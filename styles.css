@@ -12,14 +12,15 @@
    COLORS & FONTS
    ======================================== */
 :root {
-    /* Main colors - think of these as your paint palette */
-    --primary-color: #6366f1;      /* Purple-blue for buttons */
-    --primary-dark: #4f46e5;       /* Darker shade for hover effects */
+    /* Main colors - warm, appetizing food theme */
+    --primary-color: #ff6b35;      /* Warm coral-orange for buttons */
+    --primary-dark: #e85a2a;       /* Darker orange for hover effects */
+    --accent-color: #f7931e;       /* Golden orange accent */
     --text-dark: #1f2937;          /* Almost black for main text */
     --text-gray: #6b7280;          /* Gray for secondary text */
-    --background-light: #f9fafb;   /* Light gray background */
+    --background-light: #fff8f3;   /* Warm light background */
     --white: #ffffff;
-    --border-color: #e5e7eb;
+    --border-color: #ffe4d6;
 
     /* Spacing system - consistent spacing throughout */
     --spacing-xs: 0.5rem;   /* 8px */
@@ -90,7 +91,7 @@ body {
 .cta-button:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
 }
 
 /* Larger button for important actions */
@@ -103,7 +104,7 @@ body {
    HERO SECTION (Top of page)
    ======================================== */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
     color: var(--white);
     padding: var(--spacing-xl) 0;
     text-align: center;
@@ -362,7 +363,7 @@ p {
    FINAL CTA SECTION
    ======================================== */
 .final-cta {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
     color: var(--white);
     text-align: center;
     padding: var(--spacing-xl) 0;
