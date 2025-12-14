@@ -4,12 +4,14 @@ import SearchBar from './components/SearchBar'
 import Map from './components/Map'
 import RestaurantList from './components/RestaurantList'
 import RestaurantDetail from './components/RestaurantDetail'
+import CrawlerPanel from './components/CrawlerPanel'
 
 function App() {
   const [restaurants, setRestaurants] = useState([])
   const [selectedRestaurant, setSelectedRestaurant] = useState(null)
   const [loading, setLoading] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [showCrawler, setShowCrawler] = useState(false)
 
   const handleSearch = async (query) => {
     setLoading(true)
@@ -47,7 +49,15 @@ function App() {
           <h1>🍽️ SocialBite</h1>
           <p className="tagline">Discover restaurants people actually love</p>
         </div>
+        <button
+          className="admin-button"
+          onClick={() => setShowCrawler(!showCrawler)}
+        >
+          {showCrawler ? '❌ Close Admin' : '⚙️ Admin Panel'}
+        </button>
       </header>
+
+      {showCrawler && <CrawlerPanel />}
 
       <div className="search-container">
         <SearchBar onSearch={handleSearch} loading={loading} />
